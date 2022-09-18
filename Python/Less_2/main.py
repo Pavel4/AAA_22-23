@@ -1,4 +1,5 @@
 def counter(sentence):
+    """Analog Counter() from collections."""
     dict_sentence = {}
     for word in sentence.lower().split():
         if word in dict_sentence:
@@ -9,14 +10,13 @@ def counter(sentence):
 
 
 class CountVectorizer():
-
     def __init__(self, corpus=[]):
         self.corpus = corpus
 
     def fit_transform(self, corpus):
+        """"Returns a term-document matrix for a given corpus"""
         self.corpus = corpus
         seen = self.get_feature_names()
-
         term_doc_matrix = []
         for sentence in corpus:
             sentence = sentence.lower()
@@ -27,6 +27,7 @@ class CountVectorizer():
 
     @staticmethod
     def get_feature_names():
+        """Returns a list of features (unique words from the corpus)"""
         seen = []
         for i in range(len(corpus)):
             for word in corpus[i].split():
@@ -35,10 +36,10 @@ class CountVectorizer():
         return seen
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     corpus = [
-        'Crock Pot Pasta Never boil pasta again',
-        'Pasta Pomodoro Fresh ingredients Parmesan to taste'
+        "Crock Pot Pasta Never boil pasta again",
+        "Pasta Pomodoro Fresh ingredients Parmesan to taste"
     ]
 
     vectorizer = CountVectorizer()
