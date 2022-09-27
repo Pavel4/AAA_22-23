@@ -10,7 +10,9 @@ def counter(sentence):
 
 
 class CountVectorizer():
-    def __init__(self, corpus=[]):
+    def __init__(self, corpus=None):
+        if corpus is None:
+            corpus = []
         self.corpus = corpus
 
     def fit_transform(self, corpus):
