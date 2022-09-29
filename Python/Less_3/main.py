@@ -3,11 +3,18 @@ import keyword
 
 
 class ColorizeMixin:
+    """
+    Mixin to add the ability to change the text color
+    """
+
     def __repr__(self, color_code: int):
         return f'\033[1;{color_code};40m'
 
 
 class JSONToObject:
+    """
+    The class that transforms JSON objects in python objects
+    """
 
     def __init__(self, mapping: [dict, str]) -> None:
         if type(mapping) == dict:
@@ -23,6 +30,10 @@ class JSONToObject:
 
 
 class Advert(ColorizeMixin, JSONToObject):
+    """
+    The class that dynamically creates class instance
+    attributes from attributes JSON object
+    """
     repr_color_code_green = 32
 
     def __init__(self, mapping: [dict, str]) -> None:
@@ -51,7 +62,8 @@ class Advert(ColorizeMixin, JSONToObject):
         self._price = value
 
     def __repr__(self):
-        return super().__repr__(self.repr_color_code_green) + f'{self.title} | {self.price} ₽'
+        return super().__repr__(self.repr_color_code_green) \
+               + f'{self.title} | {self.price} ₽'
 
 
 if __name__ == "__main__":
@@ -69,12 +81,13 @@ if __name__ == "__main__":
         "price": 1000,
         "class": "dogs",
         "location": {
-            "address": "сельское поселение Ельдигинское, поселок санатория Тишково, 25"
+            "address": "сельское поселение Ельдигинское, \
+            поселок санатория Тишково, 25"
         }
     }
 
     lesson_str = """{
-    "title": "python", 
+    "title": "python",
     "price": 0,
     "location": {
     "address": "город Москва, Лесная, 7",
@@ -90,4 +103,4 @@ if __name__ == "__main__":
 
     print(lesson.location.address)
     print(iphone.location.address)
-    print(iphone)
+    print(corgi)
