@@ -9,7 +9,7 @@ def counter(sentence):
     return dict_sentence
 
 
-class CountVectorizer():
+class CountVectorizer:
     def __init__(self, corpus=None):
         if corpus is None:
             corpus = []
