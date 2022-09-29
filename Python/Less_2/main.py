@@ -1,5 +1,7 @@
 def counter(sentence):
-    """Analog Counter() from collections."""
+    """
+    Analog Counter() from collections.
+    """
     dict_sentence = {}
     for word in sentence.lower().split():
         if word in dict_sentence:
@@ -16,7 +18,9 @@ class CountVectorizer:
         self.corpus = corpus
 
     def fit_transform(self, corpus):
-        """"Returns a term-document matrix for a given corpus"""
+        """"
+        Returns a term-document matrix for a given corpus
+        """
         self.corpus = corpus
         seen = self.get_feature_names()
         term_doc_matrix = []
@@ -29,7 +33,9 @@ class CountVectorizer:
 
     @staticmethod
     def get_feature_names():
-        """Returns a list of features (unique words from the corpus)"""
+        """
+        Returns a list of features (unique words from the corpus)
+        """
         seen = []
         for i in range(len(corpus)):
             for word in corpus[i].split():
