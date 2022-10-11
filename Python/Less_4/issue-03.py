@@ -48,13 +48,13 @@ class TestFitTransform(unittest.TestCase):
         except AssertionError:
             print('Expected and received data are not equal!')
 
-    def test_not_in(self):
+    def test_in(self):
         cities = ['Moscow', 'New York', 'Moscow', 'London']
         new_city = ('Fryazino', [1, 0, 0])
         try:
-            self.assertNotIn(new_city, fit_transform(*cities))
+            self.assertIn(new_city, fit_transform(*cities))
         except AssertionError:
-            print(f'City {new_city} not found!')
+            print(f'City {new_city} not found!', file=sys.stderr)
 
     def test_input_type(self):
         new_city = ['Nizhny', 'Novgorod']
