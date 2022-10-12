@@ -38,7 +38,7 @@ class CountVectorizer:
         """
         seen = []
         for i in range(len(corpus)):
-            for word in corpus[i].split():
+            for word in corpus[i].lower().split():
                 if word not in seen:
                     seen.append(word.lower())
         return seen
