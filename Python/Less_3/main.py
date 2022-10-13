@@ -87,15 +87,15 @@ if __name__ == '__main__':
     }
 
     lesson_str = """{
-    'title': 'python',
-    'price': 0,
-    'location': {
-    'address': 'город Москва, Лесная, 7',
-    'metro_stations': ['Белорусская']
+    "title": "python",
+    "price": 0,
+    "location": {
+    "address": "город Москва, Лесная, 7",
+    "metro_stations": ["Белорусская"]
     }
     }"""
 
-    lesson_ad = json.loads(json.dumps(eval(lesson_str)))
+    lesson_ad = json.loads(lesson_str)
 
     lesson = Advert(lesson_ad)
     corgi = Advert(corgi_json)
