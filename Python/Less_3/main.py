@@ -17,9 +17,9 @@ class JSONToObject:
     """
 
     def __init__(self, mapping: [dict, str]) -> None:
-        if type(mapping) == dict:
+        if isinstance(mapping, dict):
             for key, value in mapping.items():
-                if type(value) != dict:
+                if not isinstance(value, dict):
                     if keyword.iskeyword(key):
                         key = key + '_'
                     self.__setattr__(key, value)
@@ -66,36 +66,36 @@ class Advert(ColorizeMixin, JSONToObject):
                + f'{self.title} | {self.price} ₽'
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     iphone_json = {
-        "title": "iPhone X",
-        "price": 100,
-        "location": {
-            "address": "город Самара, улица Мориса Тореза, 50",
-            "metro_stations": ["Спортивная", "Гагаринская"]
+        'title': 'iPhone X',
+        'price': 100,
+        'location': {
+            'address': 'город Самара, улица Мориса Тореза, 50',
+            'metro_stations': ['Спортивная', 'Гагаринская']
         }
     }
 
     corgi_json = {
-        "title": "Вельш-корги",
-        "price": 1000,
-        "class": "dogs",
-        "location": {
-            "address": "сельское поселение Ельдигинское, \
-            поселок санатория Тишково, 25"
+        'title': 'Вельш-корги',
+        'price': 1000,
+        'class': 'dogs',
+        'location': {
+            'address': 'сельское поселение Ельдигинское, \
+            поселок санатория Тишково, 25'
         }
     }
 
     lesson_str = """{
-    "title": "python",
-    "price": 0,
-    "location": {
-    "address": "город Москва, Лесная, 7",
-    "metro_stations": ["Белорусская"]
+    'title': 'python',
+    'price': 0,
+    'location': {
+    'address': 'город Москва, Лесная, 7',
+    'metro_stations': ['Белорусская']
     }
     }"""
 
-    lesson_ad = json.loads(lesson_str)
+    lesson_ad = json.loads(json.dumps(eval(lesson_str)))
 
     lesson = Advert(lesson_ad)
     corgi = Advert(corgi_json)
